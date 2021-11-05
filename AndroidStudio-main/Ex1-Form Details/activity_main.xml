@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@android:dimen/app_icon_size"
+        android:text="Patient Registration"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:typeface="serif"/>
+
+    <LinearLayout
+        android:id="@+id/nameLayout"
+        android:layout_below="@+id/Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@android:dimen/app_icon_size">
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NAME"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-black"/>
+
+        <EditText
+            android:id="@+id/nameVal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:ems="12" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addrLayout"
+        android:layout_below="@+id/nameLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@android:dimen/app_icon_size">
+        <TextView
+            android:id="@+id/addr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ADDRESS"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-black"/>
+
+        <EditText
+            android:id="@+id/addrVal"
+            android:layout_width="227dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:ems="10" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ageLayout"
+        android:layout_below="@+id/addrLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@android:dimen/app_icon_size">
+        <TextView
+            android:id="@+id/age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AGE"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-black"/>
+
+        <EditText
+            android:id="@+id/ageVal"
+            android:layout_width="264dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:ems="12" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dobLayout"
+        android:layout_below="@+id/ageLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@android:dimen/app_icon_size">
+        <TextView
+            android:id="@+id/dob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DOB"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-black"/>
+
+        <EditText
+            android:id="@+id/dobVal"
+            android:layout_width="263dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:ems="12" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/genLayout"
+        android:layout_below="@+id/dobLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@android:dimen/app_icon_size">
+        <TextView
+            android:id="@+id/gen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="GENDER"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-black"/>
+        <RadioGroup
+            android:id="@+id/genVal"
+            android:orientation="horizontal"
+            android:layout_marginLeft="70dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:text="Male" />
+
+            <RadioButton
+                android:layout_width="92dp"
+                android:layout_height="wrap_content"
+                android:text="Female" />
+        </RadioGroup>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/maritalLayout"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/genLayout"
+        android:layout_marginLeft="@android:dimen/app_icon_size"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/marital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="MARITAL"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+
+        <Spinner
+            android:id="@+id/maritalVal"
+            android:layout_width="227dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mobileLayout"
+        android:layout_width="306dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/maritalLayout"
+        android:layout_marginLeft="@android:dimen/app_icon_size"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="MOBILE NO."
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/mobileVal"
+            android:layout_width="208dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:ems="12" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/timeLayout"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/mobileLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@android:dimen/app_icon_size">
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TIME OF REG"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/timeVal"
+            android:layout_width="201dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:ems="12" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addictLayout"
+        android:layout_width="291dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timeLayout"
+        android:layout_marginLeft="@android:dimen/app_icon_size"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/addict"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ADDICTION"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/smoke"
+            android:layout_width="102dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Smoking" />
+
+        <CheckBox
+            android:id="@+id/alcohol"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Alcohol" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addictLayout"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="30dp"
+        android:text="Submit" />
+
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addictLayout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@+id/submit"
+        android:text="Reset" />
+</RelativeLayout>
