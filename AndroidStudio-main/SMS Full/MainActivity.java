@@ -70,26 +70,18 @@ public class MainActivity extends AppCompatActivity {
         sendNotif(message);
     }
 
-    void sendNotif(String message)
-    {
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
-        mBuilder.setSmallIcon(R.drawable.ic_launcher_foreground);
-        mBuilder.setContentTitle("Message Alert!");
-        mBuilder.setContentText(message);
 
-        //Reopen MainActivity on clicking the notification
-        Intent resultIntent = new Intent(this, MainActivity.class);
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addParentStack(MainActivity.class);
+    void sendNotif(String message) {
+        try {
+            //API 24
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+            builder.setSmallIcon(R.drawable.ic_launcher_foreground);
+            builder.setContentTitle("Message Alert !");
+            builder.setContentText(message);
 
-        // Adds the Intent that starts the Activity to the top of the stack
-        stackBuilder.addNextIntent(resultIntent);
-        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
-        mBuilder.setContentIntent(resultPendingIntent);
-
-        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        // notificationID allows you to update the notification later on.
-        mNotificationManager.notify(11, mBuilder.build());
+            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.notify(1, builder.build());
+        }catch(Exception e){e.printStackTrace();}
     }
 
 }
