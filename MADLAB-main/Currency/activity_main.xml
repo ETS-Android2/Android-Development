@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/src"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Source currency :"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.149"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.108" />
+
+    <TextView
+        android:id="@+id/dstn"
+        android:layout_width="145dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="232dp"
+        android:text="Destination currency :"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/src" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:text="Convert"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inrbutton" />
+
+    <EditText
+        android:id="@+id/srcv"
+        android:layout_width="154dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="62dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/src"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/dstnv"
+        android:layout_width="151dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="144dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/dstn"
+        app:layout_constraintTop_toBottomOf="@+id/dollarbutton" />
+
+    <RadioButton
+        android:id="@+id/inrbutton"
+        android:layout_width="65dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="52dp"
+        android:text="INR"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/src" />
+
+    <RadioButton
+        android:id="@+id/dollarbutton"
+        android:layout_width="82dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:text="Dollar"
+        app:layout_constraintStart_toEndOf="@+id/inrbutton"
+        app:layout_constraintTop_toBottomOf="@+id/srcv" />
+
+    <RadioButton
+        android:id="@+id/eurobutton"
+        android:layout_width="62dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
+        android:text="Euro"
+        app:layout_constraintStart_toEndOf="@+id/dollarbutton"
+        app:layout_constraintTop_toBottomOf="@+id/srcv" />
+
+    <RadioButton
+        android:id="@+id/inrbuttond"
+        android:layout_width="83dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="60dp"
+        android:text="INR"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dstn" />
+
+    <RadioButton
+        android:id="@+id/dollarbuttond"
+        android:layout_width="82dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:text="Dollar"
+        app:layout_constraintStart_toEndOf="@+id/inrbuttond"
+        app:layout_constraintTop_toBottomOf="@+id/dstnv" />
+
+    <RadioButton
+        android:id="@+id/eurobuttond"
+        android:layout_width="101dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="40dp"
+        android:text="Euro"
+        app:layout_constraintStart_toEndOf="@+id/dollarbuttond"
+        app:layout_constraintTop_toBottomOf="@+id/dstnv" />
+
+    <Button
+        android:id="@+id/clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="44dp"
+        android:text="Clear"
+        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/eurobutton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
