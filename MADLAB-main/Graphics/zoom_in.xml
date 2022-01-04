@@ -8,6 +8,6 @@
         android:duration="3000"
         android:pivotX="50%"
         android:pivotY="50%"
-        android:repeatCount:"infinite"
-        android:repeatMode:"reverse"/>
+        android:repeatCount="infinite"
+        android:repeatMode="reverse"/>
 </set>
