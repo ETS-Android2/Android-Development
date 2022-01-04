@@ -1,9 +1,15 @@
-package com.example.gps;
+//Pixel 2 -API 22
+package com.example.gpslocation;
 
+import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -17,64 +23,64 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class MainActivity extends AppCompatActivity {
-
-    private Button gpsButton;
-    private TextView latitude;
-    private TextView longitude;
-    private LocationManager locationManager;
-    private LocationListener listener;
-    private Button nextButton;
-    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
+public class MainActivity extends AppCompatActivity implements LocationListener{
+    TextView tv_lat,tv_log;
     Button sendBtn;
     EditText txtphoneNo;
     EditText txtMessage;
-    String phoneNo;
-    String message;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        latitude = (TextView) findViewById(R.id.lat);
-        longitude = (TextView) findViewById(R.id.lon);
-        gpsButton = (Button) findViewById(R.id.gpsButton);
-        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
+        tv_lat = findViewById(R.id.lat);
+        tv_log = findViewById(R.id.lon);
         sendBtn = (Button) findViewById(R.id.sendButton);
         txtphoneNo = (EditText) findViewById(R.id.contact_number);
         txtMessage = (EditText) findViewById(R.id.user_message);
 
-        listener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
-                longitude.setText("" + location.getLongitude());
-                latitude.setText("" + location.getLatitude());
-            }
-        };
-        configure();
+        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.SEND_SMS,Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+        if(ActivityCompat.checkSelfPermission(MainActivity.this,ACCESS_COARSE_LOCATION)!=PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(MainActivity.this,ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED)
+            return;
+
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,(LocationListener) this);
+
         sendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
-                if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
-                    try {
-                        SmsManager smsManager = SmsManager.getDefault();
-                        smsManager.sendTextMessage(txtphoneNo.getText().toString(), null, "Latitude: "+latitude.getText().toString()+"\nLongitude: "+longitude.getText().toString()+"\nMessage: "+txtMessage.getText().toString(), null, null);
-                        Toast.makeText(MainActivity.this, "SMS Sent!", Toast.LENGTH_LONG).show();
-                    } catch (Exception e) {
-                        Toast.makeText(MainActivity.this, "Error!", Toast.LENGTH_LONG).show();
-                    }
-                }
+                sendMsg(txtphoneNo.getEditableText().toString(),"Latitude: "+tv_lat.getText().toString()+"\nLongitude: "+tv_log.getText().toString()+"\nMessage: "+txtMessage.getText().toString());
             }
-        });
-        gpsButton.setOnClickListener(view -> {
-            locationManager.requestLocationUpdates("gps", 5000, 0, listener);
         });
     }
 
-    void configure()
+    void sendMsg(String number, String message)
     {
-        // Ask permissions
-        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.SEND_SMS,Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION}, 0);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-            return;
+        SmsManager manager = SmsManager.getDefault();
+        manager.sendTextMessage(number, null, message, null, null);
+        Toast toast = Toast.makeText(MainActivity.this,"SMS Recieved",Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    @Override
+    public void onLocationChanged(@NonNull Location location) {
+        tv_lat.setText(Double.toString(location.getLatitude()));
+        tv_log.setText(Double.toString(location.getLongitude()));
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(@NonNull String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(@NonNull String provider) {
+
     }
 }
